@@ -1,56 +1,87 @@
 <template>
-    <form class="form-container">
-        <div class="form-group">
-            <label for="theme">Tema desejado</label>
-            <select id="theme" v-model="formData.theme">
-                <option value="" disabled selected>Selecione um tema</option>
-                <option value="paz">Paz</option>
-                <option value="gratidao">Gratidão</option>
-                <option value="sabedoria">Sabedoria</option>
-                <option value="perseveranca">Perseverança</option>
-                <option value="amor">Amor</option>
-            </select>
-        </div>
+  <form @submit.prevent="iacall" class="form-container">
+    <div class="form-group">
+      <label for="theme">Tema desejado</label>
+      <CustomSelect v-model="selectedTheme" :options="themes" />
+    </div>
 
-        <div class="form-group">
-            <label for="mood">Como você está se sentido hoje?</label>
-            <select id="mood" v-model="formData.mood">
-                <option value="" disabled selected>Como você está se sentindo?</option>
-                <option value="feliz">Feliz</option>
-                <option value="ansioso">Ansioso</option>
-                <option value="triste">Triste</option>
-                <option value="reflexivo">Reflexivo</option>
-                <option value="preocupado">Preocupado</option>
-            </select>
-        </div>
+    <div class="form-group">
+      <label for="mood">Como você está se sentido hoje?</label>
+      <CustomSelect v-model="selectedMood" :options="moods" />
+    </div>
 
-        <div class="form-group">
-            <label for="readingTime">Quanto tempo disponível para a leitura?</label>
-            <select id="readingTime" v-model="formData.readingTime">
-                <option value="" disabled selected>Selecione o tempo</option>
-                <option value="5">3 minutos</option>
-                <option value="10">5 minutos</option>
-                <option value="15">10 minutos</option>
-            </select>
-        </div>
+    <button type="submit" class="submit-button" :disabled="disabledButton">Visualizar o seu devocional</button>
+  </form>
 
-        <button type="submit" class="submit-button">Visualizar o seu devocional</button>
-    </form>
+  <div v-if="loading" class="result-container">
+    <div class="loader-container">
+      <h3>Preparando seu devocional... &nbsp;</h3>
+      <div class="custom-loader"></div>
+    </div>
+  </div>
 </template>
 
 <script>
+import axios from "axios"
+import { marked } from "marked"
+import CustomSelect from "./CustomSelect.vue"
+
 export default {
-    name: 'InsertDataForm',
-    data() {
-        return {
-            formData: {
-                name: '',
-                theme: '',
-                mood: '',
-                readingTime: ''
-            },
-            generatedContent: ''
-        }
+  name: 'InsertDataForm',
+  components: {
+    CustomSelect
+  },
+  data() {
+    return {
+      selectedTheme: '',
+      themes: [
+        { value: 'paz', label: 'Paz' },
+        { value: 'gratidão', label: 'Gratidão' },
+        { value: 'perseverança', label: 'Perseverança' },
+        { value: 'sabedoria', label: 'Sabedoria' },
+        { value: 'amor', label: 'Amor' }
+      ],
+      selectedMood: '',
+      moods: [
+        { value: 'ansioso', label: 'Ansioso' },
+        { value: 'triste', label: 'Triste' },
+        { value: 'reflexivo', label: 'Reflexivo' },
+        { value: 'preocupado', label: 'Preocupado' }
+      ],
+      responseApi: '',
+      loading: false,
+      disabledButton: false
     }
+  },
+  computed: {
+    generatedContent() {
+      return `Crie uma frase em português brasileiro com o tema sobre ${this.selectedTheme} para alguém que está se sentindo ${this.SelectedMood}`
+    }
+  },
+  emits: ['form-submitted'], 
+  methods: {
+    async iacall() {
+      if (this.selectedMood == '' || this.selectedTheme == '') return
+      this.loading = true
+      this.disabledButton = true 
+            
+      try {
+        const response = await axios.post('http://localhost:11434/api/generate', {
+          model: "gemma2:2b",
+          prompt: this.generatedContent,
+          stream: false,
+        })
+        this.responseApi = response.data.response.toString()
+      } catch (error) {
+        console.error(error.message)
+      } finally {
+        this.loading = false
+      }
+      this.formSubmitted()
+    },
+    formSubmitted() {
+      this.$emit("form-submitted", marked.parse(this.responseApi))
+    }
+  }
 }
 </script>
