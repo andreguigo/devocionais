@@ -23,16 +23,12 @@
 import './assets/app.css'
 import InsertDataForm from './components/InsertDataForm.vue'
 import ResultData from './components/ResultData.vue'
-import Donation from './components/Donation.vue'
-import ReadingPlan from './components/ReadingPlan.vue'
 
 export default {
   name: 'App',
   components: {
     InsertDataForm,
-    ResultData,
-    Donation,
-    ReadingPlan
+    ResultData
   },
   data() {
     return {
