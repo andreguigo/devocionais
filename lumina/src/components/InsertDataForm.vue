@@ -15,7 +15,6 @@
 
   <div v-if="loading" class="result-container">
     <div class="loader-container">
-      <h3>Preparando seu devocional... &nbsp;</h3>
       <div class="custom-loader"></div>
     </div>
   </div>
@@ -64,7 +63,6 @@ export default {
       if (this.selectedMood == '' || this.selectedTheme == '') return
       this.loading = true
       this.disabledButton = true 
-            
       try {
         const response = await axios.post('http://localhost:11434/api/generate', {
           model: "gemma2:2b",
