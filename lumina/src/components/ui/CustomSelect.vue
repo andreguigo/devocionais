@@ -52,3 +52,54 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.custom-select {
+  position: relative;
+  max-width: 100%;
+}
+.selected {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--color-light);
+  font-family: var(--font);
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+.selected:hover {
+  background: var(--primary);
+}
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  z-index: 10;
+  background: var(--secondary-foreground);
+  color: var(--color-light);
+  padding: 0.75rem;
+  outline: none !important;
+  gap: 20px;
+  border: hidden;
+  border-radius: 5px;
+}
+.options div {
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  border-radius: 5px;
+}
+.options div:hover {
+  background: var(--primary);
+  color: var(--color-light);
+  border-radius: 5px;
+}
+.options div.active {
+  background: var(--primary);
+  color: var(--color-light);
+}
+</style>

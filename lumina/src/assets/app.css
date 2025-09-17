@@ -78,55 +78,6 @@ select:hover {
   background: var(--primary-dark) !important;
   cursor: auto;
 }
-/* custom select */
-.custom-select {
-  position: relative;
-  max-width: 100%;
-}
-.selected {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: var(--secondary-foreground);
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  color: var(--color-light);
-  font-family: var(--font);
-  font-size: 1rem;
-  transition: background 0.3s;
-}
-.selected:hover {
-  background: var(--primary);
-}
-.options {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  margin-top: 4px;
-  z-index: 10;
-  background: var(--secondary-foreground);
-  color: var(--color-light);
-  padding: 0.75rem;
-  outline: none !important;
-  gap: 20px;
-  border: hidden;
-  border-radius: 5px;
-}
-.options div {
-  padding: 0.75rem;
-  cursor: pointer;
-  transition: background 0.3s;
-  border-radius: 5px;
-}
-.options div:hover {
-  background: var(--primary);
-  color: var(--color-light);
-  border-radius: 5px;
-}
-.options div.active {
-  background: var(--primary);
-  color: var(--color-light);
-}
 /* result container */
 .result-container {
   background-color: var(--secondary-foreground);
@@ -149,44 +100,4 @@ select:hover {
   margin: 1rem 0;
   padding: 2rem 2.5rem;
   text-align: center;
-}
-/* custom loader */
-.loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1em 0;
-}
-.custom-loader {
-  width:35px;
-  height:35px;
-  color: #fef3c6;
-  --c:linear-gradient(currentColor 0 0);
-  background:
-    var(--c) 0 0,
-    var(--c) 100% 0,
-    var(--c) 100% 100%,
-    var(--c) 0 100%;
-  background-repeat: no-repeat;
-  animation: 
-    l2-1 4s infinite,
-    l2-2 4s infinite;
-}
-
-@keyframes l2-1 {
-  0%   {background-size: 0    4px,4px 0   ,0    4px,4px 0   }
-  12.5%{background-size: 100% 4px,4px 0   ,0    4px,4px 0   }
-  25%  {background-size: 100% 4px,4px 100%,0    4px,4px 0   }
-  37.5%{background-size: 100% 4px,4px 100%,100% 4px,4px 0   }
-  45%,
-  55%  {background-size: 100% 4px,4px 100%,100% 4px,4px 100%}
-  62.5%{background-size: 0    4px,4px 100%,100% 4px,4px 100%}
-  75%  {background-size: 0    4px,4px 0   ,100% 4px,4px 100%}
-  87.5%{background-size: 0    4px,4px 0   ,0    4px,4px 100%}
-  100% {background-size: 0    4px,4px 0   ,0    4px,4px 0   }
-}
-
-@keyframes l2-2 {
-  0%,49.9%{background-position: 0 0   ,100% 0   ,100% 100%,0 100%}
-  50%,100%{background-position: 100% 0,100% 100%,0    100%,0 0   }
 }

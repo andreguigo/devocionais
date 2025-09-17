@@ -14,21 +14,21 @@
   </form>
 
   <div v-if="loading" class="result-container">
-    <div class="loader-container">
-      <div class="custom-loader"></div>
-    </div>
+    <CustomLoader />
   </div>
 </template>
 
 <script>
 import axios from "axios"
 import { marked } from "marked"
-import CustomSelect from "./CustomSelect.vue"
+import CustomSelect from "./ui/CustomSelect.vue"
+import CustomLoader from "./ui/CustomLoader.vue"
 
 export default {
   name: 'InsertDataForm',
   components: {
-    CustomSelect
+    CustomSelect,
+    CustomLoader
   },
   data() {
     return {
