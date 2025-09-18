@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import '../assets/app.css'
+import '../assets/default.css'
 import InsertDataForm from '../components/InsertDataForm.vue'
 import ResultData from '../components/ResultData.vue'
 
