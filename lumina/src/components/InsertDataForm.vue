@@ -54,7 +54,7 @@ export default {
   },
   computed: {
     generatedContent() {
-      return `Crie uma frase em português brasileiro com o tema sobre ${this.selectedTheme} para alguém que está se sentindo ${this.SelectedMood}`
+      return `Escreva uma pequena reflexão sobre ${this.selectedTheme} com o sentimento ${this.selectedMood} em linguagem simples`
     }
   },
   emits: ['form-submitted'], 
@@ -64,12 +64,24 @@ export default {
       this.loading = true
       this.disabledButton = true 
       try {
-        const response = await axios.post('http://localhost:11434/api/generate', {
-          model: "gemma2:2b",
-          prompt: this.generatedContent,
-          stream: false,
-        })
-        this.responseApi = response.data.response.toString()
+        const response = await axios.post('https://router.huggingface.co/v1/chat/completions',
+        {
+          messages: [
+            {
+              role: "user",
+              content: this.generatedContent
+            }
+          ],
+          model: "deepseek-ai/DeepSeek-V3-0324",
+          stream: false
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_HF_TOKEN_IA}`,
+            "Content-Type": "application/json"
+          }
+        })        
+        this.responseApi = response.data.choices[0].message.content.toString()
       } catch (error) {
         console.error(error.message)
       } finally {
