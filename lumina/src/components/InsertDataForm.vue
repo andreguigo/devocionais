@@ -54,7 +54,7 @@ export default {
   },
   computed: {
     generatedContent() {
-      return `Escreva uma pequena reflexão sobre ${this.selectedTheme} com o sentimento ${this.selectedMood} em linguagem simples`
+      return `Escreva uma pequena reflexão bíblica sobre ${this.selectedTheme} com o sentimento ${this.selectedMood} em linguagem simples com uma oração guiada no final`
     }
   },
   emits: ['form-submitted'], 
