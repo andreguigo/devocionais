@@ -10,7 +10,19 @@
     <main class="main-content">
       <InsertDataForm @form-submitted="updateResult" />
       <ResultData :result="response" />
+      <ShareContent
+        :shareText=responseMkd
+        shareTitle
+        url
+        v-if="response"
+      />
+      <SaveContent
+        :saveText=responseMkd
+        v-if="response"
+      />
     </main>
+
+    <!-- Spoiler: Nova funcionalidade de listar conteúdos salvos -->
 
     <!-- footer -->
     <footer class="footer">
@@ -23,21 +35,31 @@
 import '../assets/default.css'
 import InsertDataForm from '../components/InsertDataForm.vue'
 import ResultData from '../components/ResultData.vue'
+import ShareContent from '@/components/ShareContent.vue'
+import SaveContent from '@/components/SaveContent.vue'
+import TurndownService from 'turndown'
+import ListContent from '@/components/ListContent.vue'
 
 export default {
   name: 'Default',
   components: {
     InsertDataForm,
-    ResultData
+    ResultData,
+    ShareContent,
+    SaveContent,
+    ListContent
   },
   data() {
     return {
-      response: ''
+      response: "",
+      responseMkd: ""
     }
   },
   methods: {
     updateResult(value) {
-      this.response = value
+      this.response = value      
+      const turndownService = new TurndownService()
+      this.responseMkd = turndownService.turndown(value) 
     }
   }
 }
