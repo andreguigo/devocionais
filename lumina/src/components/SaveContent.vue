@@ -25,6 +25,10 @@ export default {
     this.openDB();
   },
   methods: {
+    dateNow() {
+      const today = new Date()
+      return `${today.toLocaleDateString('pt-BR')} ${String(today.getHours()).padStart(2,"0")}:${String(today.getMinutes()).padStart(2,"0")}`
+    },
     openDB() {
       const request = window.indexedDB.open("LuminaDB", 1)
       request.onupgradeneeded = (event) => {
@@ -45,7 +49,8 @@ export default {
       const tx = this.db.transaction("devocionais", "readwrite")
       const store = tx.objectStore("devocionais")
       const content = {
-        text: this.saveText
+        text: this.saveText,
+        modified: this.dateNow()
       }
       store.add(content)
       tx.oncomplete = () => {
