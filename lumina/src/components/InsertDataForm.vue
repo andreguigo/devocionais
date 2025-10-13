@@ -34,18 +34,19 @@ export default {
     return {
       selectedTheme: '',
       themes: [
-        { value: 'paz', label: 'Paz' },
+        { value: 'amor', label: 'Amor' },
         { value: 'gratidão', label: 'Gratidão' },
+        { value: 'paz', label: 'Paz' },
         { value: 'perseverança', label: 'Perseverança' },
         { value: 'sabedoria', label: 'Sabedoria' },
-        { value: 'amor', label: 'Amor' }
       ],
       selectedMood: '',
       moods: [
         { value: 'ansioso', label: 'Ansioso' },
-        { value: 'triste', label: 'Triste' },
+        { value: 'Feliz', label: 'Feliz' },
+        { value: 'preocupado', label: 'Preocupado' },
         { value: 'reflexivo', label: 'Reflexivo' },
-        { value: 'preocupado', label: 'Preocupado' }
+        { value: 'triste', label: 'Triste' }
       ],
       responseApi: '',
       loading: false,

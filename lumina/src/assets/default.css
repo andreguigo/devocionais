@@ -26,7 +26,14 @@
   border-radius: 1rem;
   color: var(--color-light);
 }
-.main-content { padding: 1.5rem !important; }
+.main-content, .main-list { padding: 1.5rem !important; }
+.main-list {
+  margin: 0 auto;
+  max-width: 360px;
+  background-color: var(--primary);
+  border-radius: 1rem;
+  color: var(--color-light);
+}
 /* form styles */
 .form-container {
   margin-bottom: 1rem;
@@ -95,6 +102,11 @@ select:hover {
 .result-content h2,
 .result-content p {
   margin-bottom: 10px;
+}
+.result-content small {
+  color: var(--color-light);
+  font-size: 9pt;
+  background-color: var(--secondary);
 }
 .footer {
   margin: 1rem 0;

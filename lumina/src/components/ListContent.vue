@@ -1,19 +1,36 @@
 <template>
-  <h3>Devocionais salvos</h3>
-  <ul>
-    <li v-for="dev in devocionais" :key="dev.id">
-      <p>{{ dev.text.slice(0,50) }}...</p>
-    </li>
-  </ul>
+  <div class="result-container">
+    <h2 v-if="devocionais.length>=1" class="result-title">Seus itens salvos</h2>
+    <ul>
+      <li v-for="(item, limit) in contentVisible" :key="item.id ?? limit">
+        <div class="result-content">
+          <small>Salvo em {{ item.modified }}</small>
+          <div v-html="renderMarkdown(item.text)"></div>
+        </div>
+      </li>
+    </ul>
+    <button v-if="loadMoreContent" @click="loadMore" class="submit-button">Carregar mais...</button>
+  </div>
 </template>
 
 <script>
+import { marked } from "marked"
+
 export default {
   name: "ListContent",
   data() {
     return {
       db: null,
-      devocionais: []
+      devocionais: [],
+      limit: 1
+    }
+  },
+  computed: {
+    contentVisible() {
+      return [...this.devocionais].reverse().slice(0, this.limit)
+    },
+    loadMoreContent() {
+      return this.limit < this.devocionais.length
     }
   },
   mounted() {
@@ -37,6 +54,19 @@ export default {
       request.onsuccess = () => {
         this.devocionais = request.result
       }
+    },
+    loadMore() {
+      if (this.loadMoreContent) {
+        this.limit += 1
+      }
+    },
+    captureBold(txt){
+      const regex = /^\*\*(.*?)\*\*/
+      const match = txt.match(regex)
+      return match ? match[1] : null
+    },
+    renderMarkdown(text) {
+      return marked(text)
     }
   }
 }
