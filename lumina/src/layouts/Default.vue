@@ -22,7 +22,11 @@
       />
     </main>
 
-    <!-- Spoiler: Nova funcionalidade de listar conteúdos salvos -->
+    <p>&nbsp;</p>
+
+    <main class="main-list">
+      <ListContent />
+    </main>
 
     <!-- footer -->
     <footer class="footer">
@@ -60,6 +64,7 @@ export default {
       this.response = value      
       const turndownService = new TurndownService()
       this.responseMkd = turndownService.turndown(value) 
+      this.$refs.ListContent.init()
     }
   }
 }
