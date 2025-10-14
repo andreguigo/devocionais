@@ -10,24 +10,23 @@
     <main class="main-content">
       <InsertDataForm @form-submitted="updateResult" />
       <ResultData :result="response" />
-      <ShareContent
-        :shareText=responseMkd
-        shareTitle
-        url
-        v-if="response"
-      />
-      <SaveContent
-        :saveText=responseMkd
-        v-if="response"
-      />
+      
+      <div v-if="response">
+        <ShareContent
+          :shareText=responseMkd
+          shareTitle
+          url
+        />
+        <!--
+        <SaveContent
+          :saveText=responseMkd
+        />
+        -->
+      </div>
     </main>
-
-    <p>&nbsp;</p>
-
-    <main class="main-list">
-      <ListContent />
-    </main>
-
+    
+    <Donate />
+    
     <!-- footer -->
     <footer class="footer">
       <h5>&copy; 2025 Lumina Devocional. Todos os direitos reservados.</h5>
@@ -43,6 +42,7 @@ import ShareContent from '@/components/ShareContent.vue'
 import SaveContent from '@/components/SaveContent.vue'
 import TurndownService from 'turndown'
 import ListContent from '@/components/ListContent.vue'
+import Donate from '@/components/Donate.vue'
 
 export default {
   name: 'Default',
@@ -51,7 +51,8 @@ export default {
     ResultData,
     ShareContent,
     SaveContent,
-    ListContent
+    ListContent,
+    Donate
   },
   data() {
     return {
