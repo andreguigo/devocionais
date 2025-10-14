@@ -58,7 +58,7 @@ export default {
       mostrarModal: false,
       valoresPredefinidos: [9, 19, 29],
       valorSelecionado: null,
-      paymentLinkBase: "https://donate.stripe.com/test_eVq6oJfpL0Q28Af5Gt5Ne03",
+      paymentLinkBase: "https://donate.stripe.com/9B6eVdfJV41c0luato9bO01",
     };
   },
   computed: {
