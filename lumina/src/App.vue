@@ -1,6 +1,7 @@
 <template>
   <Analytics />
   <SpeedInsights />
+
   <Default />
 </template>
 
@@ -14,7 +15,7 @@ export default {
   components: {
     Default,
     Analytics,
-    SpeedInsights
+    SpeedInsights,
   }
 }
 </script>

@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { track } from '@vercel/analytics'
 export default {
   name: "Donate",
   data() {
@@ -51,6 +52,12 @@ export default {
         return;
       }
       window.open(this.selectedLink, "_blank");
+      track('click_checkout', {
+        category: 'conversion',
+        action: 'click_buy',
+        product: this.selectedLink,
+        value: this.selectedValue
+      })
     },
   },
 };
