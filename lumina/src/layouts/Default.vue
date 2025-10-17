@@ -26,11 +26,12 @@
     </main>
     
     <Donate />
+    <InstallButton />
     
     <!-- footer -->
     <footer class="footer">
       <h5>&copy; 2025 Lumina Devocional. Todos os direitos reservados.</h5>
-    </footer>
+    </footer>    
   </div>
 </template>
 
@@ -43,6 +44,7 @@ import SaveContent from '@/components/SaveContent.vue'
 import TurndownService from 'turndown'
 import ListContent from '@/components/ListContent.vue'
 import Donate from '@/components/Donate.vue'
+import InstallButton from '@/components/InstallButton.vue'
 
 export default {
   name: 'Default',
@@ -52,7 +54,8 @@ export default {
     ShareContent,
     SaveContent,
     ListContent,
-    Donate
+    Donate,
+    InstallButton
   },
   data() {
     return {

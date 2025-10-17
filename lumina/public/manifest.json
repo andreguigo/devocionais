@@ -2,7 +2,9 @@
   "name": "Lumina Devocionais",
   "short_name": "Lumina",
   "description": "Receba uma palavra de fé sob medida para sua alma, a cada acesso.",
-  "start_url": ".",
+  "id": "https://luminadevocionais.vercel.app",
+  "start_url": "https://luminadevocionais.vercel.app",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#fef3c6",
   "theme_color": "#ec6349",
@@ -16,6 +18,32 @@
       "src": "img/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "screenshots" : [
+    {
+      "src": "img/screenshot-all.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpg",
+      "platform": "narrow"
+    },
+    {
+      "src": "img/screenshot-form.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpg",
+      "platform": "narrow"
+    },
+    {
+      "src": "img/screenshot-result.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpg",
+      "platform": "narrow"
+    },
+    {
+      "src": "img/screenshot-donate.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpg",
+      "platform": "narrow"
     }
   ]
 }

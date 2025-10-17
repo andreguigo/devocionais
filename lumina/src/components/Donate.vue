@@ -1,6 +1,6 @@
 <template>
   <div class="donate-container">
-    <h3>Ajude nossa missão ❤</h3>
+    <h3>Ajude nossa missão <span class="pi pi-heart-fill"></span></h3>
     <p>O seu apoio ajuda a iluminar o caminho de centenas de pessoas com uma reflexão de Fé e Esperança todos os dias.</p>
     <div class="values">
       <button
@@ -27,9 +27,9 @@ export default {
     return {
       selectedValue: '9,90',
       predefinedValues: [
-        { value: '9,90', link: `${import.meta.env.VITE_DONATE_LINK_MIN}` },
-        { value: '19,90', link: `${import.meta.env.VITE_DONATE_LINK_MED}` },
-        { value: '29,90', link: `${import.meta.env.VITE_DONATE_LINK_MAX}` },
+        { value: '4,90', link: `${import.meta.env.VITE_DONATE_LINK_MIN}` },
+        { value: '9,90', link: `${import.meta.env.VITE_DONATE_LINK_MED}` },
+        { value: '19,90', link: `${import.meta.env.VITE_DONATE_LINK_MAX}` },
       ]
     };
   },
@@ -64,6 +64,7 @@ export default {
 </script>
 
 <style scoped>
+@import 'primeicons/primeicons.css';
 .donate-container {
   max-width: 390px;
   margin: 0 auto;
