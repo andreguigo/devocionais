@@ -30,7 +30,7 @@
     
     <!-- footer -->
     <footer class="footer">
-      <h5>&copy; 2025 Lumina Devocional. Todos os direitos reservados.</h5>
+      <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por Lumina Devocional</h5>
     </footer>    
   </div>
 </template>
@@ -73,3 +73,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@import 'primeicons/primeicons.css';
+</style>

@@ -27,7 +27,7 @@ export default {
     return {
       selectedValue: '9,90',
       predefinedValues: [
-        { value: '4,90', link: `${import.meta.env.VITE_DONATE_LINK_MIN}` },
+        { value: '5,90', link: `${import.meta.env.VITE_DONATE_LINK_MIN}` },
         { value: '9,90', link: `${import.meta.env.VITE_DONATE_LINK_MED}` },
         { value: '19,90', link: `${import.meta.env.VITE_DONATE_LINK_MAX}` },
       ]
