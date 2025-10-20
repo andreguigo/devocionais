@@ -30,7 +30,7 @@
     
     <!-- footer -->
     <footer class="footer">
-      <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por Lumina Devocional</h5>
+      <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por Lumina Devocionais</h5>
     </footer>    
   </div>
 </template>

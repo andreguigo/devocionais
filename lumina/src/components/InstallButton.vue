@@ -2,12 +2,8 @@
   <div class="install-container">
     <p v-if="!swActive">Checking offline support...</p>
 
-    <!-- <button
-			v-if="swActive && deferredPrompt"
-      @click="installApp"
-      class="install-button"
-    > -->
     <button
+			v-if="swActive && deferredPrompt"
       @click="installApp"
       class="install-button"
     >
