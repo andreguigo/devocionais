@@ -9,7 +9,7 @@
     >
       <span :class="plataform"></span> &nbsp; Instalar Aplicativo
     </button>
-
+		
     <p v-if="installed">App instalado!</p>
   </div>
 </template>
