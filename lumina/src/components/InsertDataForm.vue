@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="iacall" class="form-container">
+  <form @submit.prevent="callMongo" class="form-container">
     <div class="form-group">
       <label for="theme">Tema desejado</label>
       <CustomSelect v-model="selectedTheme" :options="themes" />
@@ -43,7 +43,7 @@ export default {
       selectedMood: '',
       moods: [
         { value: 'ansioso', label: 'Ansioso' },
-        { value: 'Feliz', label: 'Feliz' },
+        { value: 'feliz', label: 'Feliz' },
         { value: 'preocupado', label: 'Preocupado' },
         { value: 'reflexivo', label: 'Reflexivo' },
         { value: 'triste', label: 'Triste' }
@@ -60,7 +60,7 @@ export default {
   },
   emits: ['form-submitted'], 
   methods: {
-    async iacall() {    
+    async callIa() {    
       if (this.selectedMood == '' || this.selectedTheme == '') return
       track('click_generate', {
         category: 'engagement',
@@ -88,6 +88,32 @@ export default {
           }
         })        
         this.responseApi = response.data.choices[0].message.content.toString()
+      } catch (error) {
+        console.error(error.message)
+      } finally {
+        this.loading = false
+      }
+      this.formSubmitted()
+    },
+    async callMongo() {    
+      if (this.selectedMood == '' || this.selectedTheme == '') return
+      track('click_generate', {
+        category: 'engagement',
+        action: 'click_submit',
+        timestamp: new Date().toISOString()
+      })  
+      this.loading = true
+      this.disabledButton = true 
+      try {
+        const response = await axios.get(`https://devocionais-api-cv3k.vercel.app/api/src?theme=${this.selectedTheme}&mood=${this.selectedMood}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        console.log(response.data.message)
+        this.responseApi = response.data.message.toString()
       } catch (error) {
         console.error(error.message)
       } finally {
