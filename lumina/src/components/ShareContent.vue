@@ -19,15 +19,11 @@ export default {
     },
     async shareContent() {
       if (navigator.share) {
-        try {
-          await navigator.share({
-            title: this.shareTitle,
-            text: this.shareText,
-            url: this.shareUrl
-          })
-        } catch (err) {
-          console.log(err)
-        }
+        await navigator.share({
+          title: this.shareTitle,
+          text: this.shareText,
+          url: this.shareUrl
+        })
       } else { // fallback for desktop or browsers
         this.textCopy()
         alert('Your browser does not support direct sharing. The text has been copied.')

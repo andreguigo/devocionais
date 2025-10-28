@@ -25,40 +25,31 @@ export default {
     };
   },
   mounted() {
-    // detect platform
     this.detectPlatform()
-		// PWA is eligible
+    
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault() // prevent automatic banner
       this.deferredPrompt = e
-      console.log('PWA eligible for installation!')
-
-      // here you can do analytics or show custom button
-      console.log('Event beforeinstallprompt:', e)
     })
-    // detects if the app has already been installed
+
     window.addEventListener('appinstalled', () => {
-      console.log('PWA has been installed!')
       this.deferredPrompt = null
     })		
-    // if Service Worker is active
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.ready.then(() => {
         this.swActive = true
-        console.log('Active Service Worker. Works offline.')
       })
     }
-    // beforeinstallprompt event
+
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault()
       this.deferredPrompt = e
-      console.log('Detected beforeinstallprompt event')
     })
-    // app is installed
+
     window.addEventListener('appinstalled', () => {
       this.installed = true
       this.deferredPrompt = null
-      console.log('Installed app sucessfully')
     })
   },
   methods: {
@@ -66,7 +57,6 @@ export default {
       if (!this.deferredPrompt) return
       this.deferredPrompt.prompt()
       const { outcome } = await this.deferredPrompt.userChoice
-      console.log(`User responded to prompt: ${outcome}`)
       this.deferredPrompt = null
     },
     detectPlatform() {
