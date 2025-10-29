@@ -43,9 +43,6 @@ export default {
         this.db = event.target.result
         this.loadContent()
       }
-      request.onerror = (event) => {
-        console.log('error opening database', event)
-      }
     },
     loadContent() {
       const tx = this.db.transaction("devocionais", "readonly")

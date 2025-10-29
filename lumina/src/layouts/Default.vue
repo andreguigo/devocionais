@@ -14,8 +14,8 @@
       <div v-if="response">
         <ShareContent
           :shareText=responseMkd
-          shareTitle
-          url
+          :shareTitle
+          :shareUrl
         />
         <!--
         <SaveContent
@@ -30,7 +30,25 @@
     
     <!-- footer -->
     <footer class="footer">
-      <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por Lumina Devocionais</h5>
+      <row>
+        <h2>
+          <span @click="openLink('https://www.instagram.com/luminadevocionais/')" style="cursor: pointer;">
+            <i class="pi pi-instagram"></i>
+          </span>
+          
+          <span @click="openLink('https://wa.me/?text=Receba uma palavra de fé sob medida para sua alma. Acesse: https://luminadevocionais.com/')" style="cursor: pointer;">
+            <i class="pi pi-whatsapp"></i>
+          </span>
+        </h2>
+      </row>
+      <div class="tooltip-container">
+        <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por 
+          Lumina Devocionais
+          <span class="tooltip-text">
+            Lumina Devocionais é um projeto independente desenvolvido por André Albuquerque, cristão e analista de sistemas. Atualmente é seminarista pelo Seminário Teológico do Nazareno no Brasil e atua em alguns ministérios da igreja na cidade de Paulista - PE.
+          </span>
+        </h5>
+      </div>
     </footer>    
   </div>
 </template>
@@ -69,6 +87,9 @@ export default {
       const turndownService = new TurndownService()
       this.responseMkd = turndownService.turndown(value) 
       this.$refs.ListContent.init()
+    },
+    openLink(url) {
+      window.open(url, '_blank')
     }
   }
 }

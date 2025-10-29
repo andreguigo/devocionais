@@ -112,7 +112,6 @@ export default {
             "Content-Type": "application/json"
           }
         })
-        console.log(response.data.message)
         this.responseApi = response.data.message.toString()
       } catch (error) {
         console.error(error.message)
