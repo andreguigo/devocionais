@@ -113,3 +113,7 @@ select:hover {
   padding: 2rem 2.5rem;
   text-align: center;
 }
+.footer h2 span {
+  color: var(--color-dark);
+  margin:0 0.5rem;
+}
