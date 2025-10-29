@@ -41,9 +41,14 @@
           </span>
         </h2>
       </row>
-      <row>
-        <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por Lumina Devocionais</h5>
-      </row>
+      <div class="tooltip-container">
+        <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por 
+          Lumina Devocionais
+          <span class="tooltip-text">
+            Lumina Devocionais é um projeto independente desenvolvido por André Albuquerque, cristão e analista de sistemas. Atualmente é seminarista pelo Seminário Teológico do Nazareno no Brasil e atua em alguns ministérios da igreja na cidade de Paulista - PE.
+          </span>
+        </h5>
+      </div>
     </footer>    
   </div>
 </template>
