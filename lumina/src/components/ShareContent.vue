@@ -22,7 +22,7 @@ export default {
         try {
           await navigator.share({
             title: this.shareTitle,
-            text: this.shareText,
+            text: `${this.shareText} \n\nLumina Devocionais \nhttps://www.luminadevocionais.com/`,
             url: this.shareUrl
           })
         } catch (err) {
