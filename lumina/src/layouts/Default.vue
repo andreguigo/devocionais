@@ -14,8 +14,8 @@
       <div v-if="response">
         <ShareContent
           :shareText=responseMkd
-          shareTitle
-          url
+          :shareTitle
+          :shareUrl
         />
         <!--
         <SaveContent
