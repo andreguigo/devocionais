@@ -21,7 +21,7 @@ export default {
       if (navigator.share) {
         await navigator.share({
           title: this.shareTitle,
-          text: this.shareText,
+          text: `${this.shareText} \n\nLumina Devocionais \nhttps://www.luminadevocionais.com/`,
           url: this.shareUrl
         })
       } else { // fallback for desktop or browsers
