@@ -10,11 +10,6 @@ app.mount('#app')
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
-    try {
-      const reg = await navigator.serviceWorker.register('/service-worker.js');
-      console.log('Registered Service Worker:', reg);
-    } catch (err) {
-      console.error('Error registering Service Worker:', err);
-    }
+    await navigator.serviceWorker.register('/service-worker.js');
   });
 }
