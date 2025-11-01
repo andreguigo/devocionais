@@ -48,53 +48,13 @@ export default {
         { value: 'reflexivo', label: 'Reflexivo' },
         { value: 'triste', label: 'Triste' }
       ],
-      responseApi: '',
+      apiResponse: '',
       loading: false,
       disabledButton: false
     }
   },
-  computed: {
-    generatedContent() {
-      return `Escreva uma pequena reflexão bíblica sobre ${this.selectedTheme} com o sentimento ${this.selectedMood} em linguagem simples com uma oração guiada no final`
-    }
-  },
   emits: ['form-submitted'], 
   methods: {
-    async callIa() {    
-      if (this.selectedMood == '' || this.selectedTheme == '') return
-      track('click_generate', {
-        category: 'engagement',
-        action: 'click_submit',
-        timestamp: new Date().toISOString()
-      })  
-      this.loading = true
-      this.disabledButton = true 
-      try {
-        const response = await axios.post('https://router.huggingface.co/v1/chat/completions',
-        {
-          messages: [
-            {
-              role: "user",
-              content: this.generatedContent
-            }
-          ],
-          model: "deepseek-ai/DeepSeek-V3-0324",
-          stream: false
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_HF_TOKEN_IA}`,
-            "Content-Type": "application/json"
-          }
-        })        
-        this.responseApi = response.data.choices[0].message.content.toString()
-      } catch (error) {
-        console.error(error.message)
-      } finally {
-        this.loading = false
-      }
-      this.formSubmitted()
-    },
     async callMongo() {    
       if (this.selectedMood == '' || this.selectedTheme == '') return
       track('click_generate', {
@@ -105,14 +65,14 @@ export default {
       this.loading = true
       this.disabledButton = true 
       try {
-        const response = await axios.get(`https://devocionais-api-cv3k.vercel.app/api/src?theme=${this.selectedTheme}&mood=${this.selectedMood}`,
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json"
-          }
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}src?theme=${this.selectedTheme}&mood=${this.selectedMood}`,
+        { 
+          headers: { 
+            "Content-Type": "application/json" 
+          } 
         })
-        this.responseApi = response.data.message.toString()
+        
+        this.apiResponse = response.data.message
       } catch (error) {
         console.error(error.message)
       } finally {
@@ -121,7 +81,7 @@ export default {
       this.formSubmitted()
     },
     formSubmitted() {
-      this.$emit("form-submitted", marked.parse(this.responseApi))
+      this.$emit("form-submitted", marked.parse(this.apiResponse))
     }
   }
 }
