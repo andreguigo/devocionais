@@ -17,11 +17,6 @@
           :shareTitle
           :shareUrl
         />
-        <!--
-        <SaveContent
-          :saveText=responseMkd
-        />
-        -->
       </div>
     </main>
     

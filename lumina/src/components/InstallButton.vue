@@ -1,13 +1,12 @@
 <template>
   <div class="install-container">
     <p v-if="!swActive">Checking offline support...</p>
-
     <button
 			v-if="swActive && deferredPrompt"
       @click="installApp"
       class="install-button"
     >
-      <span :class="plataform"></span> &nbsp; Instalar Aplicativo
+      <span :class="plataform"></span> &nbsp; Instalar como app
     </button>
 		
     <p v-if="installed">App instalado!</p>
@@ -78,11 +77,11 @@ export default {
   text-align: center;
 }
 .install-button {
-  background: #3593ff;
-  color: white;
+  background: white;
+  color: #2b7dda;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 25px;
+  border-radius: 3px;
   cursor: pointer;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   font-size: 10pt;
