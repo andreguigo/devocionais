@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { track } from '@vercel/analytics'
 export default {
   name: "ShareContent",
   props: {
@@ -28,11 +27,6 @@ export default {
         this.textCopy()
         alert('Your browser does not support direct sharing. The text has been copied.')
       }
-      track('content_share', {
-        category: 'engagement',
-        action: 'click_share',
-        timestamp: new Date().toISOString()
-      })
     }
   }
 }

@@ -25,17 +25,16 @@
     
     <!-- footer -->
     <footer class="footer">
-      <row>
-        <h2>
-          <span @click="openLink('https://www.instagram.com/luminadevocionais/')" style="cursor: pointer;">
-            <i class="pi pi-instagram"></i>
-          </span>
-          
-          <span @click="openLink('https://wa.me/?text=Receba uma palavra de fé sob medida para sua alma. Acesse: https://luminadevocionais.com/')" style="cursor: pointer;">
-            <i class="pi pi-whatsapp"></i>
-          </span>
-        </h2>
-      </row>
+      <h3>
+        <span @click="openLink('https://www.instagram.com/luminadevocionais/')">
+          <i class="pi pi-instagram"></i>
+        </span>
+        
+        <span @click="openLink('https://wa.me/?text=Receba uma palavra de fé sob medida para sua alma. Acesse: https://luminadevocionais.com/')">
+          <i class="pi pi-whatsapp"></i>
+        </span>
+      </h3>
+     
       <div class="tooltip-container">
         <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por 
           Lumina Devocionais
@@ -49,15 +48,13 @@
 </template>
 
 <script>
-import '../assets/default.css'
-import InsertDataForm from '../components/InsertDataForm.vue'
-import ResultData from '../components/ResultData.vue'
-import ShareContent from '@/components/ShareContent.vue'
-import SaveContent from '@/components/SaveContent.vue'
+import '@/assets/default.css'
+import InsertDataForm from '@/components/devotional/InsertDataForm.vue'
+import ResultData from '@/components/devotional/ResultData.vue'
+import ShareContent from '@/components/devotional/ShareContent.vue'
 import TurndownService from 'turndown'
-import ListContent from '@/components/ListContent.vue'
-import Donate from '@/components/Donate.vue'
-import InstallButton from '@/components/InstallButton.vue'
+import Donate from '@/components/donate/Donate.vue'
+import InstallButton from '@/components/install/InstallButton.vue'
 
 export default {
   name: 'Default',
@@ -65,8 +62,6 @@ export default {
     InsertDataForm,
     ResultData,
     ShareContent,
-    SaveContent,
-    ListContent,
     Donate,
     InstallButton
   },

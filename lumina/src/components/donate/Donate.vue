@@ -20,14 +20,13 @@
 </template>
 
 <script>
-import { track } from '@vercel/analytics'
 export default {
   name: "Donate",
   data() {
     return {
       selectedValue: '9,90',
       predefinedValues: [
-        { value: '5,90', link: `${import.meta.env.VITE_DONATE_LINK_MIN}` },
+        { value: '4,90', link: `${import.meta.env.VITE_DONATE_LINK_MIN}` },
         { value: '9,90', link: `${import.meta.env.VITE_DONATE_LINK_MED}` },
         { value: '19,90', link: `${import.meta.env.VITE_DONATE_LINK_MAX}` },
       ]
@@ -52,12 +51,6 @@ export default {
         return;
       }
       window.open(this.selectedLink, "_blank");
-      track('click_checkout', {
-        category: 'conversion',
-        action: 'click_buy',
-        product: this.selectedLink,
-        value: this.selectedValue
-      })
     },
   },
 };

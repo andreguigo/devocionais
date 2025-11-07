@@ -23,7 +23,6 @@ import axios from "axios"
 import { marked } from "marked"
 import CustomSelect from "./ui/CustomSelect.vue"
 import CustomLoader from "./ui/CustomLoader.vue"
-import { track } from '@vercel/analytics'
 export default {
   name: 'InsertDataForm',
   components: {
@@ -57,11 +56,6 @@ export default {
   methods: {
     async callMongo() {    
       if (this.selectedMood == '' || this.selectedTheme == '') return
-      track('click_generate', {
-        category: 'engagement',
-        action: 'click_submit',
-        timestamp: new Date().toISOString()
-      })  
       this.loading = true
       this.disabledButton = true 
       try {

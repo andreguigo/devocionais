@@ -138,7 +138,11 @@ select:hover {
   visibility: visible;
   opacity: 1;
 }
-.footer h2 span {
+.footer h3 {
+  cursor: pointer;
   color: var(--color-dark);
-  margin:0 0.5rem;
+  display: flex;
+  align-items: center; /* Alinhamento vertical */
+  justify-content: center; /* Alinhamento horizontal */
+  gap: 0.5rem;
 }

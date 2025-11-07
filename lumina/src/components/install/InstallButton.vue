@@ -6,7 +6,8 @@
       @click="installApp"
       class="install-button"
     >
-      <span :class="plataform"></span> &nbsp; Instalar como app
+      <i :class="plataform"></i>
+      <span>Instalar como app</span>
     </button>
 		
     <p v-if="installed">App instalado!</p>
@@ -80,11 +81,15 @@ export default {
   background: white;
   color: #2b7dda;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   font-size: 10pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 .install-button:hover {
 	transform: scale(1.1);
