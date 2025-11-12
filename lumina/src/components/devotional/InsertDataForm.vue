@@ -57,7 +57,7 @@ export default {
     async callMongo() {    
       if (this.selectedMood == '' || this.selectedTheme == '') return
       this.loading = true
-      this.disabledButton = true 
+      this.disabledButton = true
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}src?theme=${this.selectedTheme}&mood=${this.selectedMood}`,
         { 

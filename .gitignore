@@ -9,6 +9,7 @@ yarn-error.log*
 node_modules/
 
 # Diretórios de build
+dev-dist/
 dist/
 build/
 *.local
