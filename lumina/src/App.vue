@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Default from './layouts/Default.vue'
+import Default from './layouts/DefaultLayout.vue'
 import { Analytics } from '@vercel/analytics/vue'
 import { SpeedInsights } from '@vercel/speed-insights/vue'
 

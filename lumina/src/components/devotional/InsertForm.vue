@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="callMongo" class="form-container">
     <div class="form-group">
-      <label for="theme">Tema desejado</label>
+      <label for="theme">Tema desejado:</label>
       <CustomSelect v-model="selectedTheme" :options="themes" />
     </div>
 
@@ -24,7 +24,7 @@ import { marked } from "marked"
 import CustomSelect from "./ui/CustomSelect.vue"
 import CustomLoader from "./ui/CustomLoader.vue"
 export default {
-  name: 'InsertDataForm',
+  name: 'InsertForm',
   components: {
     CustomSelect,
     CustomLoader

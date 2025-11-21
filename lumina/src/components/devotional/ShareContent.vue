@@ -1,6 +1,6 @@
 <template>
   <p class="clickshare" @click="shareContent">
-    <span class="pi pi-share-alt"></span>
+    <span class="pi pi-share-alt"></span> compartilhar
   </p>
 </template>
 
@@ -8,8 +8,11 @@
 export default {
   name: "ShareContent",
   props: {
-    shareText: "",
-    shareTitle: "Lumina Devocionais",
+    shareText: String,
+    shareTitle: { 
+      type: String, 
+      default: "Lumina Devocionais"
+    },
     shareUrl: window.location.href
   },
   methods: {
@@ -37,8 +40,8 @@ export default {
 .clickshare {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
   cursor: pointer; 
-  padding: 0.5rem;
+  padding: 0.7rem;
 }
 </style>

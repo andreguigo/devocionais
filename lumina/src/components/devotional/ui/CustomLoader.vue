@@ -18,34 +18,27 @@ export default {
   padding: 1em 0;
 }
 .custom-loader {
-  width:35px;
-  height:35px;
-  color: #fef3c6;
-  --c:linear-gradient(currentColor 0 0);
-  background:
-    var(--c) 0 0,
-    var(--c) 100% 0,
-    var(--c) 100% 100%,
-    var(--c) 0 100%;
-  background-repeat: no-repeat;
-  animation: 
-    l2-1 4s infinite,
-    l2-2 4s infinite;
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #fef3c6;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
 }
-@keyframes l2-1 {
-  0%   {background-size: 0    4px,4px 0   ,0    4px,4px 0   }
-  12.5%{background-size: 100% 4px,4px 0   ,0    4px,4px 0   }
-  25%  {background-size: 100% 4px,4px 100%,0    4px,4px 0   }
-  37.5%{background-size: 100% 4px,4px 100%,100% 4px,4px 0   }
-  45%,
-  55%  {background-size: 100% 4px,4px 100%,100% 4px,4px 100%}
-  62.5%{background-size: 0    4px,4px 100%,100% 4px,4px 100%}
-  75%  {background-size: 0    4px,4px 0   ,100% 4px,4px 100%}
-  87.5%{background-size: 0    4px,4px 0   ,0    4px,4px 100%}
-  100% {background-size: 0    4px,4px 0   ,0    4px,4px 0   }
+@keyframes l20-1{
+   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
+   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
+   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
+   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
+   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
 }
-@keyframes l2-2 {
-  0%,49.9%{background-position: 0 0   ,100% 0   ,100% 100%,0 100%}
-  50%,100%{background-position: 100% 0,100% 100%,0    100%,0 0   }
+@keyframes l20-2{ 
+  0%    {transform:scaleY(1)  rotate(0deg)}
+  49.99%{transform:scaleY(1)  rotate(135deg)}
+  50%   {transform:scaleY(-1) rotate(0deg)}
+  100%  {transform:scaleY(-1) rotate(-135deg)}
 }
 </style>
