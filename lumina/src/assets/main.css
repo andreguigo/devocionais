@@ -1,6 +1,7 @@
 @import './base.css';
 :root {
   --bg-color: #fef3c6;
+  --bg-color: linear-gradient(160deg,rgba(254, 243, 198, 1) 0%, rgba(248, 219, 126, 1) 80%, rgba(254, 243, 198, 1) 100%);
   --primary: #ec6349;
   --primary-light: #f8db7e;
   --primary-dark: #ce2340 ;

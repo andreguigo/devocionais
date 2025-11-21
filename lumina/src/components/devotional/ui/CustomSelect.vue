@@ -60,43 +60,39 @@ export default {
 }
 .selected {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.7rem;
   background-color: var(--secondary-foreground);
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius: 12px;
   color: var(--color-light);
   font-family: var(--font);
-  font-size: 1rem;
   transition: background 0.3s;
 }
-.selected:hover {
-  background: var(--primary);
-}
+.selected:hover { background: var(--primary); }
 .options {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  margin-top: 4px;
+  margin-top: 0;
   z-index: 10;
   background: var(--secondary-foreground);
   color: var(--color-light);
-  padding: 0.75rem;
+  padding: 0.5rem;
   outline: none !important;
-  gap: 20px;
+  gap: 10px;
   border: hidden;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 .options div {
-  padding: 0.75rem;
+  padding: 0.7rem;
   cursor: pointer;
   transition: background 0.3s;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 .options div:hover {
   background: var(--primary);
   color: var(--color-light);
-  border-radius: 5px;
 }
 .options div.active {
   background: var(--primary);
