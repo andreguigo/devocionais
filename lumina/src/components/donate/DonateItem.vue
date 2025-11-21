@@ -1,7 +1,9 @@
 <template>
   <div class="donate-container">
-    <h3>Ajude nossa missão <span class="pi pi-heart-fill"></span></h3>
-    <p>O seu apoio ajuda a iluminar o caminho de centenas de pessoas com uma reflexão de Fé e Esperança todos os dias.</p>
+    <div class=donate-container-title>
+      <h2> Ajude a nossa missão </h2>
+      <p>O seu apoio ajuda a iluminar o caminho de centenas de pessoas com uma reflexão de Fé e Esperança todos os dias.</p>
+    </div>
     <div class="values">
       <button
         v-for="v in predefinedValues"
@@ -21,7 +23,7 @@
 
 <script>
 export default {
-  name: "Donate",
+  name: "DonateItem",
   data() {
     return {
       selectedValue: '9,90',
@@ -59,11 +61,12 @@ export default {
 <style scoped>
 @import 'primeicons/primeicons.css';
 .donate-container {
-  max-width: 390px;
   margin: 0 auto;
   text-align: center;
-  padding: 2rem 1rem;
-  border-radius: 1rem;
+  padding: 1rem;
+}
+.donate-container-title {
+  text-align: left;
 }
 .values {
   display: flex;
@@ -75,8 +78,8 @@ export default {
   border: 1px solid #f8db7e;
   background: #fef3c6;
   font-size: small;
-  padding: 0.5rem 0.75rem;
-  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
   cursor: pointer;
   transition: 0.2s;
   color: #6f1b2c;
@@ -90,16 +93,14 @@ export default {
 .donate-btn {
   background-color: #6f1b2c;
   color: #fef3c6;
-  font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 25px;
+  border-radius: 12px;
   padding: 0.75rem 5rem;
   cursor: pointer;
   transition: background 0.2s ease;
-  font-size: 0.9rem;
 }
 .donate-btn:hover {
   background-color: #310a26;

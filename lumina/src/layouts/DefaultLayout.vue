@@ -3,7 +3,7 @@
     <!-- header -->
     <header class="header">
       <h1 class="header-title">Lumina</h1>
-      <h3>Receba uma palavra de fé sob medida para sua alma, a cada acesso.</h3>
+      <p>Receba uma palavra de fé sob medida para sua alma, a cada acesso.</p>
     </header>
 
     <!-- main content -->
@@ -25,39 +25,41 @@
     
     <!-- footer -->
     <footer class="footer">
-      <h3>
-        <span @click="openLink('https://www.instagram.com/luminadevocionais/')">
-          <i class="pi pi-instagram"></i>
-        </span>
-        
-        <span @click="openLink('https://wa.me/?text=Receba uma palavra de fé sob medida para sua alma. Acesse: https://luminadevocionais.com/')">
-          <i class="pi pi-whatsapp"></i>
-        </span>
-      </h3>
-     
+      <div>
+        <h2>
+          <span @click="openLink('https://www.instagram.com/luminadevocionais/')">
+            <i class="pi pi-instagram"></i>
+          </span>
+          
+          <span @click="openLink('https://wa.me/?text=Receba uma palavra de fé sob medida para sua alma. Acesse: https://luminadevocionais.com/')">
+            <i class="pi pi-whatsapp"></i>
+          </span>
+        </h2>
+      </div>
       <div class="tooltip-container">
-        <h5>Desenvolvido com <i class="pi pi-heart-fill"></i> por 
-          Lumina Devocionais
+        <h5>
+          Desenvolvido com <i class="pi pi-heart-fill"></i> por Lumina Devocionais
           <span class="tooltip-text">
             Lumina Devocionais é um projeto independente desenvolvido por André Albuquerque, cristão e analista de sistemas. Atualmente é seminarista pelo Seminário Teológico do Nazareno no Brasil e atua em alguns ministérios da igreja na cidade de Paulista - PE.
           </span>
         </h5>
       </div>
+
     </footer>    
   </div>
 </template>
 
 <script>
 import '@/assets/default.css'
-import InsertDataForm from '@/components/devotional/InsertDataForm.vue'
+import InsertDataForm from '@/components/devotional/InsertForm.vue'
 import ResultData from '@/components/devotional/ResultData.vue'
 import ShareContent from '@/components/devotional/ShareContent.vue'
 import TurndownService from 'turndown'
-import Donate from '@/components/donate/Donate.vue'
+import Donate from '@/components/donate/DonateItem.vue'
 import InstallButton from '@/components/install/InstallButton.vue'
 
 export default {
-  name: 'Default',
+  name: 'DefaultLayout',
   components: {
     InsertDataForm,
     ResultData,

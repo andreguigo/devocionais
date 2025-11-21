@@ -56,7 +56,6 @@ export default {
     async installApp() {
       if (!this.deferredPrompt) return
       this.deferredPrompt.prompt()
-      const { outcome } = await this.deferredPrompt.userChoice
       this.deferredPrompt = null
     },
     detectPlatform() {
