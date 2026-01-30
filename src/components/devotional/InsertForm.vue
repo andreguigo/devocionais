@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="callMongo" class="form-container">
+  <form @submit.prevent="fetchDevotionals" class="form-container">
     <div class="form-group">
       <label for="theme">Tema desejado:</label>
       <CustomSelect v-model="selectedTheme" :options="themes" />
@@ -19,10 +19,11 @@
 </template>
 
 <script>
-import axios from "axios"
 import { marked } from "marked"
 import CustomSelect from "./ui/CustomSelect.vue"
 import CustomLoader from "./ui/CustomLoader.vue"
+import { useDevotionalStore } from "@/stores/devotional";
+
 export default {
   name: 'InsertForm',
   components: {
@@ -54,23 +55,22 @@ export default {
   },
   emits: ['form-submitted'], 
   methods: {
-    async callMongo() {    
+    async fetchDevotionals() {    
       if (this.selectedMood == '' || this.selectedTheme == '') return
+      
       this.loading = true
       this.disabledButton = true
+      
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}src?theme=${this.selectedTheme}&mood=${this.selectedMood}`,
-        { 
-          headers: { 
-            "Content-Type": "application/json" 
-          } 
-        })
-        
-        this.apiResponse = response.data.message
+        const devotionalStore = useDevotionalStore();
+        await devotionalStore.fetchDevotionalByThemeAndMood(this.selectedTheme, this.selectedMood);
+      
+        this.apiResponse = devotionalStore.devotional;
       } catch (error) {
         console.error(error.message)
       } finally {
         this.loading = false
+        this.disabledButton = false
       }
       this.formSubmitted()
     },

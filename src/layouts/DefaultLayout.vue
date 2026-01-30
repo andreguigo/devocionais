@@ -51,6 +51,7 @@
 
 <script>
 import '@/assets/default.css'
+import { nextTick } from 'vue'
 import InsertDataForm from '@/components/devotional/InsertForm.vue'
 import ResultData from '@/components/devotional/ResultData.vue'
 import ShareContent from '@/components/devotional/ShareContent.vue'
@@ -74,11 +75,17 @@ export default {
     }
   },
   methods: {
-    updateResult(value) {
-      this.response = value      
+    async updateResult(value) {
+      this.response = value
+
       const turndownService = new TurndownService()
       this.responseMkd = turndownService.turndown(value) 
-      this.$refs.ListContent.init()
+      
+      await nextTick()
+
+      if (this.$refs.ListContent) {
+        this.$refs.ListContent.init()
+      }
     },
     openLink(url) {
       window.open(url, '_blank')
